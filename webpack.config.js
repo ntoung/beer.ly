@@ -8,6 +8,8 @@ module.exports = {
     filename: 'bundle.js'
   },
   plugins: [new HtmlWebpackPlugin({
-    title: 'Beer.ly'
+    title: 'Beer.ly',
+    template: './client/index.ejs',
+    inject: 'body' // inject all script files at the bottom of the body
   })]
 }
