@@ -38,3 +38,7 @@ jspm_packages
 
 # Dist build folder
 dist/
+
+# Certificates
+cert.pem
+key.pem
