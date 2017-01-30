@@ -1,5 +1,5 @@
 const express = require('express');
-
+const path = require('path');
 const app = express();
 
 const api = require('./api/api');
@@ -13,7 +13,7 @@ require('./middleware/middleware')(app, express);
 app.use('./api', api);
 
 app.use('/', function(req, res) { 
-  res.sendFile('index.html');
+  res.sendFile(path.join(__dirname, '../dist', 'index.html'));
 });
 
 
