@@ -14,4 +14,4 @@ app.use('/api', api);
 
 https.createServer(ssl, app).listen(port);
 
-console.info('==> 🌎 Listening on port %s. Open up https://localhost:%s/ in your browser.', port, port);
+console.info('==> 🍺 flowing on %ss. Open up https://localhost:%s/ in your browser.', port, port);

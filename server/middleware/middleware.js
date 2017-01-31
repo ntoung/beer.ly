@@ -18,6 +18,13 @@ module.exports = function (app, express) {
   app.use(bodyParser.json()) // parse application/json
   app.use(morgan('dev'))
 
+
+  // The following Webpack middleware allows for hot reloading on the client when in development.
+  // No refresh or restart needed. It saves state in memory, and it's awesome. Don't break it.
+  // If you'd like to learn more:
+  // https://github.com/webpack/webpack-dev-middleware
+  // https://github.com/glenjamin/webpack-hot-middleware
+
   if (isDeveloping) {
     const compiler = webpack(config);
     const middleware = webpackMiddleware(compiler, {
