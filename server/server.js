@@ -1,21 +1,17 @@
+/* eslint no-console: 0 */
+const https = require('https');
+const ssl = require('./middleware/ssl.js');
 const express = require('express');
-const path = require('path');
 const app = express();
-
 const api = require('./api/api');
 
+const isDeveloping = process.env.NODE_ENV !== 'production';
+const port = isDeveloping ? 8008 : process.env.PORT;
 
-
-// Middleware functions
 require('./middleware/middleware')(app, express);
 
-// Routing functions
-app.use('./api', api);
+app.use('/api', api);
 
-app.use('/', function(req, res) { 
-  res.sendFile(path.join(__dirname, '../dist', 'index.html'));
-});
+https.createServer(ssl, app).listen(port);
 
-
-
-module.exports = app;
+console.info('==> 🍺 flowing on %ss. Open up https://localhost:%s/ in your browser.', port, port);
