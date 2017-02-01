@@ -42,3 +42,6 @@ dist/
 # Certificates
 cert.pem
 key.pem
+
+# API Keys
+server/api/config/
