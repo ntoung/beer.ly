@@ -1,1 +1,0 @@
-module.exports.key = '714ce43e6e78f3334635222a96c9882c';

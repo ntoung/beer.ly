@@ -1,13 +1,14 @@
-'use strict'
+'use strict';
 
 const axios = require('axios');
 
 // const Post = require('./postModel')
-const _API_KEY = require('../../config/brewerydb.js');
+const _API_KEY = require('../config/apiKeys.js').breweryDBKey;
 const _API_ENDPOINT = 'http://api.brewerydb.com/v2/';
 
 exports.get = (req, res, next) => {
   console.log('brewery get controller');
+  
 
   // Post.find({})
   // .then((post) => {
