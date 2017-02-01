@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './App.css';
 import BeerList from './components/BeerList.jsx';
 
-var beersData = [
+let beersData = [
   {
     name: 'test1',
     image: 'https://affotd.files.wordpress.com/2011/08/smiley-beer.jpg'
