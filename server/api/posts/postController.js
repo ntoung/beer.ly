@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 // const Post = require('./postModel')
 
@@ -11,7 +11,7 @@ exports.get = (req, res, next) => {
   //     console.log('No posts in database')
   //   }
   // })
-}
+};
 
 exports.post = (req, res, next) => {
   // let newPost = new Post({
@@ -28,4 +28,4 @@ exports.post = (req, res, next) => {
   //     console.log('Could not save post')
   //   }
   // })
-}
+};
