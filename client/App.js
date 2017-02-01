@@ -9,7 +9,35 @@ let beersData = [
   },
   {
     name: 'test2',
-    image: 'https://502brews.files.wordpress.com/2013/05/draft-beer-small.jpg'
+    image: 'https://affotd.files.wordpress.com/2011/08/smiley-beer.jpg'
+  },
+  {
+    name: 'test1',
+    image: 'https://affotd.files.wordpress.com/2011/08/smiley-beer.jpg'
+  },
+  {
+    name: 'test2',
+    image: 'https://affotd.files.wordpress.com/2011/08/smiley-beer.jpg'
+  },
+  {
+    name: 'test1',
+    image: 'https://affotd.files.wordpress.com/2011/08/smiley-beer.jpg'
+  },
+  {
+    name: 'test2',
+    image: 'https://affotd.files.wordpress.com/2011/08/smiley-beer.jpg'
+  },
+  {
+    name: 'test2',
+    image: 'https://affotd.files.wordpress.com/2011/08/smiley-beer.jpg'
+  },
+  {
+    name: 'test1',
+    image: 'https://affotd.files.wordpress.com/2011/08/smiley-beer.jpg'
+  },
+  {
+    name: 'test2',
+    image: 'https://affotd.files.wordpress.com/2011/08/smiley-beer.jpg'
   }
 ];
 
