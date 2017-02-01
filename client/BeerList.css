@@ -1,0 +1,9 @@
+.beerItem {
+	flex-grow: 1;
+}
+
+.beerRow {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
