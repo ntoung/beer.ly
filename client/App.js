@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './App.css';
 import BeerList from './components/BeerList.jsx';
+import BeerCart from './components/BeerCart.jsx';
 
 let beersData = [
   {
@@ -44,13 +45,31 @@ let beersData = [
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {test: 'foo'};
+    this.state = {
+      test: 'foo',
+      cart: []
+    };
+    this.addToCart = this.addToCart.bind(this);
   }
+
+  addToCart(beer) {
+    //https://facebook.github.io/react/tutorial/tutorial.html#why-immutability-is-important
+    var newCart = this.state.cart.slice(0);
+    newCart.push(beer);
+    this.setState({
+      cart: newCart
+    });
+  }
+
   render() {
     return (
       <div>
         <h1 className={styles.app}>Beer.ly</h1>
-        <BeerList beers={beersData} />
+        {this.state.cart.length > 0 ?
+          <BeerCart beers={this.state.cart} />
+          : null
+        }
+        <BeerList beers={beersData} addToCart={this.addToCart} />
       </div>
     );
   }
