@@ -18,7 +18,6 @@ var BeerRow = (props) => (
 );
 
 var BeerList = (props) => {
-  //code here to build beer rows
   var beerRows = [];
   var curRow = [];
   for (var i = 0; i < props.beers.length; i++) {
@@ -29,13 +28,11 @@ var BeerList = (props) => {
   		curRow = [];
   	}
   }
- //  var beerRow = (<BeerRow beers={curRow} style={styles.beerRow}/>);
-	// beerRows.push(beerRow);
   return (
 	  <div>
 	  	{beerRows}
 	  </div>
 	)
 };
-export default BeerList;
 
+export default BeerList;
