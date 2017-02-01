@@ -1,9 +1,9 @@
-'use strict'
+'use strict';
 
 // const User = require('./userModel')
 
 exports.get = (req, res, next) => {
-  res.end()
+  res.end();
   // User.find({})
   // .then((user) => {
   //   if (user) {
@@ -12,10 +12,10 @@ exports.get = (req, res, next) => {
   //     console.log('No users in database')
   //   }
   // })
-}
+};
 
 exports.post = (req, res, next) => {
-  res.end()
+  res.end();
   // let newUser = new User({
   //   username: req.body.username,
   //   password: req.body.password
@@ -29,4 +29,4 @@ exports.post = (req, res, next) => {
   //     console.log('Could not save user')
   //   }
   // })
-}
+};

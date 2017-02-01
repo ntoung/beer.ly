@@ -1,17 +1,18 @@
 /* eslint no-console: 0 */
-const https = require('https');
-const ssl = require('./middleware/ssl.js');
 const express = require('express');
+const https = require('https');
 const app = express();
+
+const ssl = require('./middleware/ssl.js');
+const config = require('./config/config');
 const api = require('./api/api');
 
-const isDeveloping = process.env.NODE_ENV !== 'production';
-const port = isDeveloping ? 8008 : process.env.PORT;
-
-require('./middleware/middleware')(app, express);
+require('./middleware/middleware')(app);
 
 app.use('/api', api);
 
-https.createServer(ssl, app).listen(port);
+require('./middleware/webpack')(app, express);
 
-console.info('==> 🍺 flowing on %ss. Open up https://localhost:%s/ in your browser.', port, port);
+https.createServer(ssl, app).listen(config.port);
+
+console.info('==> 🍺  flowing on %ss. Open up https://localhost:%s/ in your browser.', config.port, config.port);
