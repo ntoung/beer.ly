@@ -3,7 +3,7 @@
 const router = require('express').Router();
 const brewery = require('./breweryController');
 
-router.route('/')
+router.route('/:location')
   .get(brewery.get)
   .post(brewery.post);
 
