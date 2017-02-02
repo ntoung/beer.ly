@@ -66,7 +66,7 @@ export default class Search extends Component {
       },
       floatingLabelStyle: {
         color: '#FFF',
-        'font-size': '18px',
+        'fontSize': '18px',
       },
       floatingLabelFocusStyle: {
         color: '#FFF',
