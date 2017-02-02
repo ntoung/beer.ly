@@ -1,0 +1,13 @@
+.beerItem {
+  margin-right: 25px;
+}
+
+.cartRow {
+  border: solid;
+  border-color: black;
+  display: flex;
+  flex-direction: row;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+

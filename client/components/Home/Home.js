@@ -1,6 +1,6 @@
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Search from './Search';
+import Search from '../Search/Search';
 import styles from './Home.css';
 
 class Home extends React.Component {
