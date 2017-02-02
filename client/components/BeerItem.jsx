@@ -6,6 +6,7 @@ var BeerItem = (props) => {
   var handleClick = () => {
     props.addToCart(props.beer)
   }
+
   return (
     <div>
       <div className={styles.title}>

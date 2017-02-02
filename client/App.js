@@ -42,6 +42,8 @@ let beersData = [
   }
 ];
 
+const cartSize = 4;
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -54,6 +56,9 @@ export default class App extends React.Component {
 
   addToCart(beer) {
     //https://facebook.github.io/react/tutorial/tutorial.html#why-immutability-is-important
+    if (this.state.cart.length === 4) {
+      return;
+    }
     var newCart = this.state.cart.slice(0);
     newCart.push(beer);
     this.setState({
