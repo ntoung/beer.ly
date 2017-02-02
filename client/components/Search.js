@@ -3,7 +3,7 @@ import AutoComplete from 'material-ui/AutoComplete';
 import { browserHistory } from 'react-router';
 import axios from 'axios';
 import _ from 'lodash';
-import styles from './Search.css'
+import styles from './Search.css';
 
 export default class Search extends Component {
   constructor(props) {
@@ -15,20 +15,18 @@ export default class Search extends Component {
     };
 
     this.autoComplete = _.debounce(this.fetchCities, 300);
-    this.onUpdateInput = this.onUpdateInput.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSelection = this.handleSelection.bind(this);
     this.fetchCities = this.fetchCities.bind(this);
   }
 
-  onUpdateInput(inputValue) {
+  handleChange(inputValue) {
     this.setState({ input: inputValue });
     this.autoComplete();
   }
 
-  onSelection(cityName, index) {
-    console.log(cityName);
-    console.log(index);
+  handleSelection(cityName) {
     browserHistory.push('/' + cityName);
-    // TODO: handle selection by transferring to new page.
   }
 
   fetchCities() {
@@ -59,17 +57,35 @@ export default class Search extends Component {
   }
 
   render() {
+    const inlineStyles = {
+      inputStyle: {
+        color: '#FFF',
+      },
+      underlineStyle: {
+        borderColor: '#FFF',
+      },
+      floatingLabelStyle: {
+        color: '#FFF',
+        'font-size': '18px',
+      },
+      floatingLabelFocusStyle: {
+        color: '#FFF',
+      },
+    };
+
     return (
       <div className={styles.searchBar}>
         <AutoComplete
-          hintText="Search by city"
-          floatingLabelText="City"
+          floatingLabelText="Choose a city"
           dataSource={this.state.dataSource}
-          onUpdateInput={this.onUpdateInput}
-          onNewRequest={this.onSelection}
+          onUpdateInput={this.handleChange}
+          onNewRequest={this.handleSelection}
           filter={(searchText, key) => true}
           fullWidth={true}
           animated={true}
+          inputStyle={inlineStyles.inputStyle}
+          underlineFocusStyle={inlineStyles.underlineStyle}
+          floatingLabelStyle={inlineStyles.floatingLabelStyle}
         />
       </div>
     );
