@@ -1,0 +1,14 @@
+html, body, .app {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  color: #444;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  background-color: white;
+  height: 100vh;
+}

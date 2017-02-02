@@ -1,6 +1,6 @@
 import React from 'react';
-import BeerItem from './BeerItem.jsx';
-import styles from '../BeerList.css';
+import BeerItem from '../BeerItem/BeerItem';
+import styles from './BeerList.css';
 
 const rowSize = 3;
 

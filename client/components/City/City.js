@@ -19,7 +19,7 @@ const breweries = [
   }
 ];
 
-class Breweries extends React.Component {
+class City extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -41,4 +41,4 @@ class Breweries extends React.Component {
   }
 }
 
-export default Breweries;
+export default City;

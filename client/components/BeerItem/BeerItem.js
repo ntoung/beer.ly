@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../BeerItem.css';
+import styles from './BeerItem.css';
 
 var BeerItem = (props) => {
 

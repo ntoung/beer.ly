@@ -1,6 +1,6 @@
 import React from 'react';
-import BeerItem from './BeerItem.jsx';
-import styles from '../BeerCart.css';
+import BeerItem from '../BeerItem/BeerItem';
+import styles from './BeerCart.css';
 
 const cartSize = 4;
 

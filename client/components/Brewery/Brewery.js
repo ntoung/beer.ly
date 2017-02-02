@@ -1,9 +1,10 @@
 import React from 'react';
-import styles from './App.css';
-import BeerList from './components/BeerList.jsx';
-import BeerCart from './components/BeerCart.jsx';
+// import { Link } from 'react-router';
+import BeerList from '../BeerList/BeerList';
+import BeerCart from '../BeerCart/BeerCart';
+import styles from './Brewery.css';
 
-let beersData = [
+const beersData = [
   {
     name: 'test1',
     image: 'https://affotd.files.wordpress.com/2011/08/smiley-beer.jpg'
@@ -44,7 +45,7 @@ let beersData = [
 
 const cartSize = 4;
 
-export default class App extends React.Component {
+class Beers extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -55,11 +56,11 @@ export default class App extends React.Component {
   }
 
   addToCart(beer) {
-    //https://facebook.github.io/react/tutorial/tutorial.html#why-immutability-is-important
-    if (this.state.cart.length === 4) {
+    // https://facebook.github.io/react/tutorial/tutorial.html#why-immutability-is-important
+    if (this.state.cart.length === cartSize) {
       return;
     }
-    var newCart = this.state.cart.slice(0);
+    const newCart = this.state.cart.slice(0);
     newCart.push(beer);
     this.setState({
       cart: newCart
@@ -69,13 +70,15 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <h1 className={styles.app}>Beer.ly</h1>
-        {this.state.cart.length > 0 ?
-          <BeerCart beers={this.state.cart} />
-          : null
-        }
-        <BeerList beers={beersData} addToCart={this.addToCart} />
+        <h2>{this.props.params.brewery}</h2>
+        <div>
+          <h1 className={styles.app}>Beer.ly</h1>
+          {this.state.cart.length > 0 ? <BeerCart beers={this.state.cart} /> : null}
+          <BeerList beers={beersData} addToCart={this.addToCart} />
+        </div>
       </div>
     );
   }
 }
+
+export default Beers;
