@@ -1,0 +1,32 @@
+.home {
+    height: 100%;
+    max-width: 100%;
+    background: url(https://s3-us-west-1.amazonaws.com/beerly/beer.jpg) no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.title {
+  position: relative;
+  top: 60px;
+  left: 60px;
+  margin: 0;
+  padding: 0;
+  color: #C04818;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchField {
+  width: 50%;
+}

@@ -1,10 +1,14 @@
-.app {
-  background-color: green;
-  height: 50px;
-  border: 1px solid blue;
+html, body, .app {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-.bap {
-  background-color: red;
-  height: 25px;
+.app {
+  color: #444;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  background-color: white;
+  height: 100vh;
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './App.css';
 import BeerList from './components/BeerList.jsx';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 
 let beersData = [
   {
@@ -48,9 +50,8 @@ export default class App extends React.Component {
   }
   render() {
     return (
-      <div>
-        <h1 className={styles.app}>Beer.ly</h1>
-        <BeerList beers={beersData} />
+      <div className={styles.app}>
+        {this.props.children}
       </div>
     );
   }
