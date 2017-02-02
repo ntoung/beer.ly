@@ -44,4 +44,4 @@ cert.pem
 key.pem
 
 # API Keys
-server/api/config/
+server/config/apiKeys.js

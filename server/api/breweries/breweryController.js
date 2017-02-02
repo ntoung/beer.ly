@@ -3,7 +3,7 @@
 const axios = require('axios');
 
 // const Post = require('./postModel')
-const _API_KEY = require('../config/apiKeys.js').breweryDBKey;
+const _API_KEY = require('../../config/apiKeys.js').breweryDBKey;
 const _API_BASEURL = 'http://api.brewerydb.com/v2/';
 
 
@@ -36,7 +36,7 @@ exports.post = (req, res, next) => {
 
 }
 
-// Helper formatting function for connecting to breweryDB 
+// Helper formatting function for connecting to breweryDB
 var createUrl = function(endPoint, queryOptions) {
   var key = '?key=' + _API_KEY;
 

@@ -3,7 +3,7 @@
 const axios = require('axios');
 
 // const Post = require('./postModel')
-const _API_KEY = require('../config/apiKeys.js').googleMapsAPIKey;
+const _API_KEY = require('../../config/apiKeys.js').googleMapsAPIKey;
 const _API_BASEURL = 'https://maps.googleapis.com/maps/api/';
 
 
@@ -14,7 +14,7 @@ exports.get = (req, res, next) => {
 
   // endpoint query options
   var queryOptions = {
-    
+
     input: req.params.locationPartial,
     types: '(cities)'
   };
@@ -35,7 +35,7 @@ exports.post = (req, res, next) => {
 
 }
 
-// Helper formatting function for connecting to breweryDB 
+// Helper formatting function for connecting to breweryDB
 var createUrl = function(endPoint, queryOptions) {
   var key = '?key=' + _API_KEY;
 
