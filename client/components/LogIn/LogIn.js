@@ -19,8 +19,11 @@ class LogIn extends React.Component {
 
   handleSubmit(event) {
 
+    // Attempt login
     axios.post('auth/users/logIn/', this.state)
       .then((response) => {
+        // Clear input fields 
+        this.setState({username:'', password:''});
         console.log(response.data.message);
       })
       .catch((error) => {

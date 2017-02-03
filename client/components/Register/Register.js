@@ -21,6 +21,8 @@ class Register extends React.Component {
 
     axios.post('auth/users/register/', this.state)
       .then((response) => {
+        // Clear input fields 
+        this.setState({username:'', password:''});
         console.log(response.data.message);
       })
       .catch((error) => {
