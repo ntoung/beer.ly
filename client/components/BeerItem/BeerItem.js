@@ -13,10 +13,7 @@ var BeerItem = (props) => {
         {props.beer.name}
       </div>
       <img src={props.beer.image} className={styles.image} />
-      {props.isBeingRenderedInCart ?
-        null
-        : <button className={styles.addButton} onClick={handleClick} >Add to Flight</button>
-      }
+      <button className={styles.addButton} onClick={handleClick} >Add to Flight</button>
     </div>
   )
 };
