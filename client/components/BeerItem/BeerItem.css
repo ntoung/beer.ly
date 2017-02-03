@@ -5,8 +5,11 @@
 }
 
 .image {
-  width: 350px;
-  height: 350px;
+  display: block;
+  max-width:124px;
+  max-height:200px;
+  width: auto;
+  height: auto;
 }
 
 .title {

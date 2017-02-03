@@ -1,5 +1,5 @@
 import React from 'react';
-import BeerItem from '../BeerItem/BeerItem';
+import CartItem from '../CartItem/CartItem';
 import styles from './BeerCart.css';
 
 const cartSize = 4;
@@ -8,10 +8,8 @@ var BeerCart = (props) => (
   <div className={styles.cartRow}>
   {
     props.beers.map((beer) =>
-      <BeerItem
+      <CartItem
         beer={beer}
-        className={styles.beerItem}
-        isBeingRenderedInCart={true}
       />
     )
   }
