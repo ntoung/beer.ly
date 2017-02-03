@@ -46,7 +46,7 @@ class City extends React.Component {
         <h1>Breweries in {this.props.params.city}</h1>
         <ul>
           {this.state.breweries.map(brewery => (
-            <li key={brewery.id}><Link to={`/${this.state.city}/${brewery.name}`}>{brewery.brewery.name}</Link></li>
+            <li key={brewery.id}><Link to={`/${this.state.city}/${brewery.brewery.name}`}>{brewery.brewery.name}</Link></li>
           ))}
         </ul>
       </div>

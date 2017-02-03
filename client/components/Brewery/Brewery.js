@@ -3,45 +3,7 @@ import React from 'react';
 import BeerList from '../BeerList/BeerList';
 import BeerCart from '../BeerCart/BeerCart';
 import styles from './Brewery.css';
-
-const beersData = [
-  {
-    name: 'test1',
-    image: 'https://affotd.files.wordpress.com/2011/08/smiley-beer.jpg'
-  },
-  {
-    name: 'test2',
-    image: 'https://affotd.files.wordpress.com/2011/08/smiley-beer.jpg'
-  },
-  {
-    name: 'test1',
-    image: 'https://affotd.files.wordpress.com/2011/08/smiley-beer.jpg'
-  },
-  {
-    name: 'test2',
-    image: 'https://affotd.files.wordpress.com/2011/08/smiley-beer.jpg'
-  },
-  {
-    name: 'test1',
-    image: 'https://affotd.files.wordpress.com/2011/08/smiley-beer.jpg'
-  },
-  {
-    name: 'test2',
-    image: 'https://affotd.files.wordpress.com/2011/08/smiley-beer.jpg'
-  },
-  {
-    name: 'test2',
-    image: 'https://affotd.files.wordpress.com/2011/08/smiley-beer.jpg'
-  },
-  {
-    name: 'test1',
-    image: 'https://affotd.files.wordpress.com/2011/08/smiley-beer.jpg'
-  },
-  {
-    name: 'test2',
-    image: 'https://affotd.files.wordpress.com/2011/08/smiley-beer.jpg'
-  }
-];
+import axios from 'axios';
 
 const cartSize = 4;
 
@@ -49,7 +11,7 @@ class Beers extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      test: 'foo',
+      beers: [],
       cart: []
     };
     this.addToCart = this.addToCart.bind(this);
@@ -67,6 +29,31 @@ class Beers extends React.Component {
     });
   }
 
+  componentDidMount() {
+    this.fetchBeers();
+  }
+
+  fetchBeers() {
+    const context = this;
+    axios.get('/api/beers/' + this.props.params.brewery)
+      .then(function (response) {
+        context.handleSuccess(response);
+      })
+      .catch(function (error) {
+        context.handleError(error);
+      });
+  }
+
+  handleSuccess(beers) {
+    this.setState({
+      beers: beers
+    });
+  }
+
+  handleError(error) {
+    console.log(error);
+  }
+
   render() {
     return (
       <div>
@@ -74,7 +61,7 @@ class Beers extends React.Component {
         <div>
           <h1 className={styles.app}>Beer.ly</h1>
           {this.state.cart.length > 0 ? <BeerCart beers={this.state.cart} /> : null}
-          <BeerList beers={beersData} addToCart={this.addToCart} />
+          <BeerList beers={this.state.beers} addToCart={this.addToCart} />
         </div>
       </div>
     );

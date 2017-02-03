@@ -7,25 +7,46 @@ const _API_KEY = require('../../config/apiKeys.js').breweryDBKey;
 const _API_BASEURL = 'http://api.brewerydb.com/v2/';
 
 exports.get = (req, res, next) => {
-  // breweryDB endpoint
-  var endPoint = 'locations/';
+  const name = req.params.brewery;
 
-  // endpoint query options
+  fetchBreweryByName(name)
+    .then(function(response) {
+      const breweryID = response.data[0].id;
+      return fetchBeersByBreweryId(breweryID);
+    })
+    .then(function(response) {
+      res.end(JSON.stringify(response.data));
+    })
+    .catch(function(error) {
+      console.log(error);
+    })
+}
+
+function fetchBreweryByName(name) {
+  var endPoint = 'breweries/';
   var queryOptions = {
-    //locality: 'San Francisco'
-    locality: req.params.location,
-    p: '1'
+    // name: 'Fort Point Brewing Company'
+    name: name
   };
 
-  // axios RESTful API call
-  axios.get(createUrl(endPoint, queryOptions))
+  return fetch(endPoint, queryOptions);
+}
+
+function fetchBeersByBreweryId(breweryID) {
+  var endPoint = `brewery/${breweryID}/beers/`;
+  return fetch(endPoint, {});
+}
+
+
+function fetch(endPoint, queryOptions) {
+  var url = createUrl(endPoint, queryOptions);
+  return axios.get(url)
   .then(function (response) {
-    res.end(JSON.stringify(response.data));
+    return response.data;
   })
   .catch(function (error) {
-    console.log(error);
+    return error;
   });
-
 }
 
 // Helper formatting function for connecting to breweryDB
@@ -46,5 +67,3 @@ var createUrl = function(endPoint, queryOptions) {
 
   return _API_BASEURL + endPoint + key + '&' + queryStrings.join('&');
 }
-
-
