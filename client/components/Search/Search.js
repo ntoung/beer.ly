@@ -1,11 +1,14 @@
-import React, {Component} from 'react';
+import React from 'react';
 import AutoComplete from 'material-ui/AutoComplete';
 import { browserHistory } from 'react-router';
 import axios from 'axios';
 import _ from 'lodash';
 import styles from './Search.css';
 
-export default class Search extends Component {
+const CancelToken = axios.CancelToken;
+const source = CancelToken.source();
+
+class Search extends React.Component {
   constructor(props) {
     super(props);
 
@@ -18,6 +21,10 @@ export default class Search extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSelection = this.handleSelection.bind(this);
     this.fetchCities = this.fetchCities.bind(this);
+  }
+
+  componentWillUnmount() {
+    source.cancel();
   }
 
   handleChange(inputValue) {
@@ -36,13 +43,15 @@ export default class Search extends Component {
     }
 
     const context = this;
-    axios.get('api/locations/' + this.state.input)
+    axios.get('api/locations/' + this.state.input, {cancelToken: source.token})
       .then((response) => {
         const cities = this.handleSuccess(response);
         context.setState({ dataSource: cities });
       })
-      .catch((error) => {
-        this.handleError(error);
+      .catch((thrown) => {
+        if (!axios.isCancel(thrown)) {
+          context.handleError(thrown);
+        }
       });
   }
 
@@ -53,7 +62,7 @@ export default class Search extends Component {
   }
 
   handleError(error) {
-    console.log(error);
+    console.log('Error: ', error);
   }
 
   render() {
@@ -91,3 +100,5 @@ export default class Search extends Component {
     );
   }
 }
+
+export default Search;

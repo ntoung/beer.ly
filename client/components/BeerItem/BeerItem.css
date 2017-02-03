@@ -5,11 +5,14 @@
 }
 
 .image {
-
+  display: block;
+  max-width:124px;
+  max-height:200px;
+  width: auto;
+  height: auto;
 }
 
 .title {
   text-align: center;
   font-weight: bold;
 }
-

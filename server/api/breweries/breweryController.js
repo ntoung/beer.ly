@@ -1,56 +1,27 @@
 'use strict';
 
-const axios = require('axios');
+const utils = require('../utils/helpers');
 
-// const Post = require('./postModel')
-const _API_KEY = require('../../config/apiKeys.js').breweryDBKey;
-const _API_BASEURL = 'http://api.brewerydb.com/v2/';
-
-
-
-exports.get = (req, res, next) => {
-
-  // breweryDB endpoint
-  var endPoint = 'locations/';
-
-  // endpoint query options
-  var queryOptions = {
-    //locality: 'San Francisco'
-    locality: req.params.location,
-    p: '1'
+function fetchBreweriesByLocation(city) {
+  const endPoint = 'locations/';
+  const queryOptions = {
+    // locality: 'San Francisco'
+    locality: city,
+    p: '1',
+    isPrimary: 'Y',
+    order: 'breweryName'
   };
 
-  // axios RESTful API call
-  axios.get(createUrl(endPoint, queryOptions))
-  .then(function (response) {
-    res.end(JSON.stringify(response.data));
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-
+  return utils.fetch(endPoint, queryOptions);
 }
 
-exports.post = (req, res, next) => {
-  // console.log('brewery post controller');
-
-}
-
-// Helper formatting function for connecting to breweryDB
-var createUrl = function(endPoint, queryOptions) {
-  var key = '?key=' + _API_KEY;
-
-  var queryStrings = [];
-
-  // Create query string from all query options
-  for (let query in queryOptions) {
-    if (typeof queryOptions[query] === 'string') {
-      // encode spaces for url if query option is string
-      queryStrings.push(query + '=' + queryOptions[query].replace(' ', '+'));
-    } else {
-      queryStrings.push(query + '=' + queryOptions[query]);
-    }
-  }
-
-  return _API_BASEURL + endPoint + key + '&' + queryStrings.join('&');
-}
+exports.get = (req, res) => {
+  const city = req.params.location;
+  fetchBreweriesByLocation(city)
+    .then(function(response) {
+      res.end(JSON.stringify(response.data));
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+};
