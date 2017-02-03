@@ -22,7 +22,7 @@ const BeerRow = (props) => (
 
 BeerRow.propTypes = {
   beers: React.PropTypes.array,
-  addToCart: React.PropTypes.function
+  addToCart: React.PropTypes.func
 };
 
 const BeerList = (props) => {
@@ -54,7 +54,7 @@ const BeerList = (props) => {
 
 BeerList.propTypes = {
   beers: React.PropTypes.array,
-  addToCart: React.PropTypes.function
+  addToCart: React.PropTypes.func
 };
 
 export default BeerList;

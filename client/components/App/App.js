@@ -4,7 +4,7 @@ import styles from './App.css';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
-export default class App extends React.Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,3 +21,9 @@ export default class App extends React.Component {
     );
   }
 }
+
+App.propTypes = {
+  children: React.PropTypes.object.isRequired
+};
+
+export default App;

@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router';
 import axios from 'axios';
+import BreweryList from '../BreweryList/BreweryList';
+import styles from './City.css';
 
 class City extends React.Component {
   constructor(props) {
@@ -42,13 +43,9 @@ class City extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Breweries in {this.props.params.city}</h1>
-        <ul>
-          {this.state.breweries.map(brewery => (
-            <li key={brewery.id}><Link to={`/${this.state.city}/${brewery.brewery.name}`}>{brewery.brewery.name}</Link></li>
-          ))}
-        </ul>
+      <div className={styles.wrapper}>
+        <h1>Breweries in {this.state.city}</h1>
+        <BreweryList breweries={this.state.breweries} city={this.state.city}/>
       </div>
     );
   }

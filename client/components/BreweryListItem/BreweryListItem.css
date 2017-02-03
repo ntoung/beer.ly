@@ -1,0 +1,40 @@
+a {
+  text-decoration: none;
+}
+
+.title {
+  color: #444;
+}
+
+.cell {
+  flex: 0 0 100%;
+  background: rgba(51, 153, 204,.2);
+  transition: background-color 0.3s ease;
+  border: 1px solid #33cccc;
+  border-radius: 3px;
+  margin-bottom: 1.5em;
+  height: 200px;
+  text-align: center;
+}
+
+.cell:after {
+  /* todo */
+ }
+
+.cell:hover {
+  background: #33cccc;
+}
+
+/* Tablet (medium) screens */
+@media (min-width: 40em) {
+  .cell {
+    flex: 0 0 40%;
+  }
+}
+
+/* Large screens */
+@media (min-width: 60em) {
+  .cell {
+    flex: 0 0 30%;
+  }
+}

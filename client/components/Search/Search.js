@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import AutoComplete from 'material-ui/AutoComplete';
 import { browserHistory } from 'react-router';
 import axios from 'axios';
@@ -8,7 +8,7 @@ import styles from './Search.css';
 const CancelToken = axios.CancelToken;
 const source = CancelToken.source();
 
-export default class Search extends Component {
+class Search extends React.Component {
   constructor(props) {
     super(props);
 
@@ -100,3 +100,5 @@ export default class Search extends Component {
     );
   }
 }
+
+export default Search;
