@@ -33,7 +33,7 @@ class City extends React.Component {
   }
 
   handleSuccess(response) {
-    return response.data.data.map((brewery) => brewery);
+    return response.data.map((brewery) => brewery);
   }
 
   handleError(error) {

@@ -5,11 +5,11 @@
 }
 
 .image {
-
+  width: 350px;
+  height: 350px;
 }
 
 .title {
   text-align: center;
   font-weight: bold;
 }
-
