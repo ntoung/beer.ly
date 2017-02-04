@@ -1,3 +1,7 @@
+* {
+	box-sizing: border-box;
+}
+
 html, body, .app {
   height: 100%;
   width: 100%;
@@ -5,9 +9,18 @@ html, body, .app {
   padding: 0;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a, li {
+	text-decoration: none;
+}
+
 .app {
   color: #444;
-  box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
   background-color: white;
   height: 100vh;
