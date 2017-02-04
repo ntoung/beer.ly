@@ -8,7 +8,7 @@ var StatsPlugin = require('stats-webpack-plugin');
 
 module.exports = {
   entry: [
-    path.join(__dirname, 'client/main.js')
+    path.join(__dirname, 'client/main.jsx')
   ],
   output: {
     path: path.join(__dirname, '/dist/'),
@@ -55,5 +55,8 @@ module.exports = {
   },
   postcss: [
     require('autoprefixer')
-  ]
+  ],
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
+  }
 };

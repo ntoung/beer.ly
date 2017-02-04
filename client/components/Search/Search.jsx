@@ -8,6 +8,22 @@ import styles from './Search.css';
 const CancelToken = axios.CancelToken;
 const source = CancelToken.source();
 
+const inlineStyles = {
+  inputStyle: {
+    color: '#FFF',
+  },
+  underlineStyle: {
+    borderColor: '#FFF',
+  },
+  floatingLabelStyle: {
+    color: '#FFF',
+    'fontSize': '18px',
+  },
+  floatingLabelFocusStyle: {
+    color: '#FFF',
+  },
+};
+
 class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -23,20 +39,16 @@ class Search extends React.Component {
     this.fetchCities = this.fetchCities.bind(this);
   }
 
-  componentWillUnmount() {
-    source.cancel();
-  }
+  componentWillUnmount = () => source.cancel();
 
-  handleChange(inputValue) {
+  handleChange = (inputValue) => {
     this.setState({ input: inputValue });
     this.autoComplete();
   }
 
-  handleSelection(cityName) {
-    browserHistory.push('/' + cityName);
-  }
+  handleSelection = (cityName) => browserHistory.push('/' + cityName);
 
-  fetchCities() {
+  fetchCities = () => {
     if (this.state.input === '') {
       this.setState({ dataSource: [] });
       return;
@@ -55,33 +67,15 @@ class Search extends React.Component {
       });
   }
 
-  handleSuccess(response) {
+  handleSuccess = (response) => {
     return response.data.predictions.map((city) => {
       return city.structured_formatting.main_text;
     });
   }
 
-  handleError(error) {
-    console.log('Error: ', error);
-  }
+  handleError = (error) => console.log('Error: ', error);
 
   render() {
-    const inlineStyles = {
-      inputStyle: {
-        color: '#FFF',
-      },
-      underlineStyle: {
-        borderColor: '#FFF',
-      },
-      floatingLabelStyle: {
-        color: '#FFF',
-        'fontSize': '18px',
-      },
-      floatingLabelFocusStyle: {
-        color: '#FFF',
-      },
-    };
-
     return (
       <div className={styles.searchBar}>
         <AutoComplete
