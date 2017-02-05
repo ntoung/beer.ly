@@ -50,7 +50,7 @@ class Cart extends React.Component {
 }
 
 Cart.propTypes = {
-  location: React.PropTypes.object.isRequired
+  //location: React.PropTypes.object.isRequired
 };
 
 export default Cart;

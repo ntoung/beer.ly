@@ -6,7 +6,10 @@ class BreweryList extends React.Component {
 
   render() {
     const breweries = this.props.breweries.map((brewery) => {
-      return <BreweryListItem key={brewery.brewery.id} brewery={brewery} city={this.props.city} />;
+      // Only display breweries with images
+      if (brewery.brewery.images !== undefined) {
+        return <BreweryListItem key={brewery.brewery.id} brewery={brewery} city={this.props.city} />;  
+      }
     });
 
     return (
