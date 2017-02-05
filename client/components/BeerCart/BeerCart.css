@@ -5,7 +5,8 @@
 .cartRow {
 	position: relative;
   border: solid;
-  border-color: black;
+  border-width: 1px;
+  border-color: gray;
   display: flex;
   flex-direction: row;
   flex-flow: row wrap;
