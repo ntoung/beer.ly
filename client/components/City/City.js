@@ -44,7 +44,10 @@ class City extends React.Component {
   render() {
     return (
       <div className={styles.wrapper}>
-        <h1>Breweries in {this.state.city}</h1>
+        <div className={styles.heading}>
+          <h1>Breweries in {this.state.city}</h1>
+          <p>About {this.state.breweries.length} results ({(1/this.state.breweries.length).toFixed(5)} seconds) </p>
+        </div>
         <BreweryList breweries={this.state.breweries} city={this.state.city}/>
       </div>
     );
