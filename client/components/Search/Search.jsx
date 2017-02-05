@@ -6,7 +6,6 @@ import _ from 'lodash';
 import styles from './Search.css';
 
 const CancelToken = axios.CancelToken;
-const source = CancelToken.source();
 
 const inlineStyles = {
   inputStyle: {
@@ -35,18 +34,26 @@ class Search extends React.Component {
 
     this.autoComplete = _.debounce(this.fetchCities, 300);
     this.handleChange = this.handleChange.bind(this);
-    this.handleSelection = this.handleSelection.bind(this);
+    this.handleRequest = this.handleRequest.bind(this);
     this.fetchCities = this.fetchCities.bind(this);
   }
 
-  componentWillUnmount = () => source.cancel();
+  componentDidMount = () => {
+    this.source = CancelToken.source();
+  }
+
+  componentWillUnmount = () => {
+    this.source.cancel();
+  }
 
   handleChange = (inputValue) => {
     this.setState({ input: inputValue });
     this.autoComplete();
   }
 
-  handleSelection = (cityName) => browserHistory.push('/' + cityName);
+  handleRequest = (cityName) => {
+    browserHistory.push('/' + cityName);
+  }
 
   fetchCities = () => {
     if (this.state.input === '') {
@@ -55,7 +62,7 @@ class Search extends React.Component {
     }
 
     const context = this;
-    axios.get('api/locations/' + this.state.input, {cancelToken: source.token})
+    axios.get('api/locations/' + this.state.input, {cancelToken: this.source.token})
       .then((response) => {
         const cities = this.handleSuccess(response);
         context.setState({ dataSource: cities });
@@ -73,7 +80,9 @@ class Search extends React.Component {
     });
   }
 
-  handleError = (error) => console.log('Error: ', error);
+  handleError = (error) => {
+    console.log('Error: ', error);
+  }
 
   render() {
     return (
@@ -82,13 +91,13 @@ class Search extends React.Component {
           floatingLabelText="Choose a city"
           dataSource={this.state.dataSource}
           onUpdateInput={this.handleChange}
-          onNewRequest={this.handleSelection}
-          filter={(searchText, key) => true}
+          onNewRequest={this.handleRequest}
+          filter={() => true}
           fullWidth={true}
-          animated={true}
           inputStyle={inlineStyles.inputStyle}
           underlineFocusStyle={inlineStyles.underlineStyle}
           floatingLabelStyle={inlineStyles.floatingLabelStyle}
+          value={this.state.input}
         />
       </div>
     );

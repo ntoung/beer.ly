@@ -1,18 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './components/App/App';
-import Home from './components/Home/Home';
-import City from './components/City/City';
-import Brewery from './components/Brewery/Brewery';
+import { render } from 'react-dom';
+import { Router, browserHistory } from 'react-router';
+import routes from './components/Router/routes';
 
-import { Router, Route, browserHistory, IndexRoute } from 'react-router';
+// helps register clicks and taps on different devices when using material-ui
+const injectTapEventPlugin = require('react-tap-event-plugin');
+injectTapEventPlugin();
 
-ReactDOM.render((
-  <Router history={browserHistory}>
-    <Route path="/" component={App}>
-      <IndexRoute component={Home} />
-      <Route path="/:city" component={City} />
-      <Route path="/:city/:brewery" component={Brewery} />
-    </Route>
-  </Router>
-), document.getElementById('root'));
+render(
+  <Router routes={routes} history={browserHistory}/>,
+  document.getElementById('root')
+);

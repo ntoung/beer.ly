@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import styles from './BreweryListItem.css';
-import InfoButton from 'material-ui/IconButton';
+// import InfoButton from 'material-ui/IconButton';
 
 class BreweryList extends React.Component {
   constructor(props) {
@@ -13,8 +13,7 @@ class BreweryList extends React.Component {
     this.website = breweryInfo.website;
     this.description = breweryInfo.description;
     this.phoneNumber = this.props.brewery.phone || '(650) 269 - 2188'; // Default number
-    this.cleanedPhoneNumber = this.phoneNumber.replace(/["'() -]/g,"");
-
+    this.cleanedPhoneNumber = this.phoneNumber.replace(/["'() -]/g, '');
   }
 
   // <Link href={"tel:" + this.cleanedPhoneNumber }>
@@ -37,7 +36,7 @@ class BreweryList extends React.Component {
           <h3 className={styles.title}>{this.props.brewery.brewery.name}</h3>
         </div>
       </div>
-    )
+    );
   }
 }
 
