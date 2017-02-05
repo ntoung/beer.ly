@@ -3,11 +3,23 @@
 }
 
 .cartRow {
+	position: relative;
   border: solid;
-  border-color: black;
+  border-width: 1px;
+  border-color: gray;
   display: flex;
   flex-direction: row;
   flex-flow: row wrap;
   justify-content: center;
+  margin-left: 160px;
+  margin-right: 160px;
+}
+
+.button {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	height: 35px;
+	width: 100px;
 }
 

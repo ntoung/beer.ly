@@ -1,7 +1,42 @@
+.container {
+	position: relative;
+	padding: 10px;
+	width: 11vw;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-bottom: 10px;
+	box-shadow: 0px 3px 20px #eee;
+}
+
+.title {
+  text-align: center;
+  font-weight: bold;
+}
+
 .image {
-	display: block;
+  display: block;
   max-width:62px;
   max-height:100px;
   width: auto;
-  height: auto;
+  height: 200px;
+  margin: auto;
 }
+
+.xButtonImage {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	top: 5px;
+	right: 5px;
+}
+
+/*.deleteButton {
+	margin-top: 10px;
+	text-align: center;
+	font-size: 12px;
+	color: blue;
+}*/
+/*.deleteButton:hover {
+    text-decoration: underline;
+    color:orange;
+}*/

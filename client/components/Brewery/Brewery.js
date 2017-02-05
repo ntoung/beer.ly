@@ -14,6 +14,7 @@ class Beers extends React.Component {
       cart: []
     };
     this.addToCart = this.addToCart.bind(this);
+    this.removeFromCart = this.removeFromCart.bind(this);
   }
 
   componentDidMount() {
@@ -27,6 +28,14 @@ class Beers extends React.Component {
     }
     const newCart = this.state.cart.slice(0);
     newCart.push(beer);
+    this.setState({
+      cart: newCart
+    });
+  }
+
+  removeFromCart(indexToRemove) {
+    var newCart = this.state.cart.slice(0);
+    newCart.splice(indexToRemove, 1);
     this.setState({
       cart: newCart
     });
@@ -58,7 +67,7 @@ class Beers extends React.Component {
       <div>
         <h2>{this.props.params.brewery}</h2>
         <div>
-          {this.state.cart.length > 0 ? <BeerCart beers={this.state.cart} /> : null}
+          {this.state.cart.length > 0 ? <BeerCart beers={this.state.cart} removeFromCart={this.removeFromCart} /> : null}
           <BeerList beers={this.state.beers} addToCart={this.addToCart} />
         </div>
       </div>
