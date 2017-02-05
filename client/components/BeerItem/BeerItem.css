@@ -24,9 +24,9 @@
 
 .image {
   display: block;
-  max-width:124px;
-  width: auto;
-  height: 200px;
+  /*max-width:124px;*/
+  /*width: auto;*/
+  height: 250px;
   margin: auto;
 }
 
