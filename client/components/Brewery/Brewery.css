@@ -1,0 +1,16 @@
+.wrapper {
+  position: relative;
+  top: 100px;
+  text-align: center;
+
+}
+
+.title {
+  margin-bottom: 40px;
+  line-height: .8em;
+}
+
+.details {
+  font-size: 1em;
+  margin: 0;
+}

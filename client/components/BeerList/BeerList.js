@@ -27,6 +27,7 @@ var BeerList = (props) => {
   	curRow.push(props.beers[i]);
   	if (curRow.length === rowSize) {
   		var beerRow = (<BeerRow
+        key={i}
         className={styles.row}
         beers={curRow}
         style={styles.beerRow}
@@ -37,7 +38,7 @@ var BeerList = (props) => {
   	}
   }
   return (
-	  <div>
+	  <div className={styles.wrapper}>
 	  	{beerRows}
 	  </div>
 	)
