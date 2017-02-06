@@ -1,8 +1,14 @@
 import React from 'react';
+import axios from 'axios';
+
 import BeerList from '../BeerList/BeerList';
 import BeerCart from '../BeerCart/BeerCart';
+import Checkout from '../Checkout/Checkout';
 import styles from './Brewery.css';
-import axios from 'axios';
+
+
+
+
 
 const cartSize = 4;
 
@@ -11,10 +17,12 @@ class Beers extends React.Component {
     super(props);
     this.state = {
       beers: [],
-      cart: []
+      cart: [],
+      inCheckout: false
     };
     this.addToCart = this.addToCart.bind(this);
     this.removeFromCart = this.removeFromCart.bind(this);
+    this.checkout = this.checkout.bind(this);
   }
 
   componentDidMount() {
@@ -39,6 +47,11 @@ class Beers extends React.Component {
     this.setState({
       cart: newCart
     });
+  }
+
+  checkout() {
+    // window.history.pushState(“blerp”, “Title”, “/checkout”);
+    this.setState({inCheckout: true});
   }
 
   fetchBeers() {
@@ -67,8 +80,11 @@ class Beers extends React.Component {
       <div>
         <h2>{this.props.params.brewery}</h2>
         <div>
-          {this.state.cart.length > 0 ? <BeerCart beers={this.state.cart} removeFromCart={this.removeFromCart} /> : null}
-          <BeerList beers={this.state.beers} addToCart={this.addToCart} />
+          {this.state.cart.length > 0 ? <BeerCart beers={this.state.cart} removeFromCart={this.removeFromCart} inCheckout={this.state.inCheckout} checkout={this.checkout} /> : null}
+          {this.state.inCheckout ?
+            <Checkout beers={this.state.beers} />
+            : <BeerList beers={this.state.beers} addToCart={this.addToCart} />
+          }
         </div>
       </div>
     );

@@ -9,6 +9,10 @@ import { ReactScriptLoaderMixin } from 'react-script-loader';
 var Checkout = React.createClass({
   mixins: [ ReactScriptLoaderMixin ],
 
+  constructor(props) {
+    super(props);
+  },
+
   getInitialState: function() {
     return {
       stripeLoading: true,
