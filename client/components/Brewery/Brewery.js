@@ -4,6 +4,7 @@ import axios from 'axios';
 import BeerList from '../BeerList/BeerList';
 import BeerCart from '../BeerCart/BeerCart';
 import Checkout from '../Checkout/Checkout';
+import BeerItemModal from '../BeerItemModal/BeerItemModal';
 import styles from './Brewery.css';
 
 const cartSize = 4;
@@ -14,11 +15,14 @@ class Beers extends React.Component {
     this.state = {
       beers: [],
       cart: [],
-      inCheckout: false
+      inCheckout: false,
+      modalIsOpen: false,
+      modalBeer: {}
     };
     this.addToCart = this.addToCart.bind(this);
     this.removeFromCart = this.removeFromCart.bind(this);
     this.checkout = this.checkout.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
   componentDidMount() {
@@ -75,6 +79,13 @@ class Beers extends React.Component {
     console.log(error);
   }
 
+  toggleModal(beer) {
+    this.setState({
+      modalIsOpen: !this.state.modalIsOpen,
+      modalBeer: beer || {}
+    });
+  }
+
   render() {
     return (
       <div>
@@ -83,7 +94,10 @@ class Beers extends React.Component {
           {this.state.cart.length > 0 ? <BeerCart beers={this.state.cart} removeFromCart={this.removeFromCart} inCheckout={this.state.inCheckout} checkout={this.checkout} /> : null}
           {this.state.inCheckout ?
             <Checkout />
-            : <BeerList beers={this.state.beers} addToCart={this.addToCart} />
+            : <div>
+                <BeerList beers={this.state.beers} addToCart={this.addToCart} toggleModal={this.toggleModal} />
+                <BeerItemModal isOpen={this.state.modalIsOpen} onCancel={this.toggleModal} beer={this.state.modalBeer} toggleModal={this.toggleModal} />
+              </div>
           }
         </div>
       </div>

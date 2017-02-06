@@ -1,4 +1,5 @@
 import React from 'react';
+
 import BeerItem from '../BeerItem/BeerItem';
 import styles from './BeerList.css';
 
@@ -14,6 +15,7 @@ var BeerRow = (props) => (
 					className={styles.beerItem}
           isBeingRenderedInCart={false}
           addToCart={props.addToCart}
+          toggleModal={props.toggleModal}
 				/>
 			)
 		}
@@ -31,6 +33,7 @@ var BeerList = (props) => {
         beers={curRow}
         style={styles.beerRow}
         addToCart={props.addToCart}
+        toggleModal={props.toggleModal}
       />);
   		beerRows.push(beerRow);
   		curRow = [];

@@ -16,23 +16,31 @@ const mockImages = [
 
 const BeerItem = (props) => {
 
-  const handleClick = () => {
-    var beer = {
+  const handleAddToCartClick = () => {
+    const beer = {
       name: props.beer.name,
       image: mockImages[props.beer.style.id % mockImages.length]
     }
     props.addToCart(beer);
   };
 
+  const handleModal = () => {
+    const beer = {
+      name: props.beer.name,
+      image: mockImages[props.beer.style.id % mockImages.length]
+    }
+    props.toggleModal(beer);
+  }
+
   return (
-    <div className={styles.container}>
+    <div className={styles.container} onClick={handleModal}>
       <div className={styles.title}>
         {props.beer.name}
       </div>
       {/*<img src={props.beer.labels ? props.beer.labels.large : 'http://placehold.it/350x350'} className={styles.image} /> */}
       <img src={mockImages[props.beer.style.id % mockImages.length]} className={styles.image} />
 
-      <button className={styles.addButton} onClick={handleClick} >Add to Flight</button>
+      <button className={styles.addButton} onClick={handleAddToCartClick} >Add to Flight</button>
 
     </div>
   );
