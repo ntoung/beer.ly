@@ -77,8 +77,11 @@ class Beers extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>{this.props.params.brewery}</h2>
+      <div className={styles.wrapper}>
+        <div className={styles.title}>
+          <h1>{this.props.params.brewery}</h1>
+          <p className={styles.details}><strong>{this.state.beers.length}</strong> beers to choose from!</p>
+        </div>
         <div>
           {this.state.cart.length > 0 ? <BeerCart beers={this.state.cart} removeFromCart={this.removeFromCart} inCheckout={this.state.inCheckout} checkout={this.checkout} /> : null}
           {this.state.inCheckout ?

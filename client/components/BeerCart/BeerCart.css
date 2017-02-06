@@ -1,25 +1,38 @@
 .beerItem {
   margin-right: 25px;
+
 }
 
 .cartRow {
 	position: relative;
-  border: solid;
-  border-width: 1px;
-  border-color: gray;
+  
   display: flex;
   flex-direction: row;
   flex-flow: row wrap;
   justify-content: center;
-  margin-left: 160px;
-  margin-right: 160px;
+  width: 100%;
+  margin: 0 auto;
+  height: 180px;
 }
 
 .button {
 	position: absolute;
-	bottom: 10px;
-	right: 10px;
+	top: 13px;
+  margin-left: 120px;
 	height: 35px;
 	width: 100px;
+  background-color: green;
 }
 
+.wrapper {
+  position: relative;
+  padding-top: 2px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.075);
+}
+
+.details {
+  margin: 0 auto;
+  width: 20%;
+}
