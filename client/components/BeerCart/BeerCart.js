@@ -1,6 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router';
+
 import CartItem from '../CartItem/CartItem';
+import Checkout from '../Checkout/Checkout';
+
 import styles from './BeerCart.css';
+
 // import RaisedButton from '../../../material-ui/RaisedButton/RaisedButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -20,7 +25,10 @@ var BeerCart = (props) => {
     {cartItems}
     {props.beers.length === cartSize ?
       <MuiThemeProvider>
-        <RaisedButton className={styles.button} label="Checkout" />
+        {props.inCheckout ?
+          null
+          : <RaisedButton className={styles.button} onClick={props.checkout} label="Checkout" />
+        }
       </MuiThemeProvider>
       : null
     }

@@ -1,8 +1,10 @@
 import React from 'react';
+import axios from 'axios';
+
 import BeerList from '../BeerList/BeerList';
 import BeerCart from '../BeerCart/BeerCart';
+import Checkout from '../Checkout/Checkout';
 import styles from './Brewery.css';
-import axios from 'axios';
 
 const cartSize = 4;
 
@@ -11,10 +13,12 @@ class Beers extends React.Component {
     super(props);
     this.state = {
       beers: [],
-      cart: []
+      cart: [],
+      inCheckout: false
     };
     this.addToCart = this.addToCart.bind(this);
     this.removeFromCart = this.removeFromCart.bind(this);
+    this.checkout = this.checkout.bind(this);
   }
 
   componentDidMount() {
@@ -36,9 +40,18 @@ class Beers extends React.Component {
   removeFromCart(indexToRemove) {
     var newCart = this.state.cart.slice(0);
     newCart.splice(indexToRemove, 1);
+    if (this.state.inCheckout) {
+      window.history.back();
+    }
     this.setState({
-      cart: newCart
+      cart: newCart,
+      inCheckout: false
     });
+  }
+
+  checkout() {
+    window.history.pushState('not sure what this arg is', 'Title-In-Browser-History', '/checkout');
+    this.setState({inCheckout: true});
   }
 
   fetchBeers() {
@@ -67,8 +80,11 @@ class Beers extends React.Component {
       <div>
         <h2>{this.props.params.brewery}</h2>
         <div>
-          {this.state.cart.length > 0 ? <BeerCart beers={this.state.cart} removeFromCart={this.removeFromCart} /> : null}
-          <BeerList beers={this.state.beers} addToCart={this.addToCart} />
+          {this.state.cart.length > 0 ? <BeerCart beers={this.state.cart} removeFromCart={this.removeFromCart} inCheckout={this.state.inCheckout} checkout={this.checkout} /> : null}
+          {this.state.inCheckout ?
+            <Checkout />
+            : <BeerList beers={this.state.beers} addToCart={this.addToCart} />
+          }
         </div>
       </div>
     );

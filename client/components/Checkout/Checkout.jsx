@@ -113,9 +113,6 @@ var Checkout = React.createClass({
                 <span>{ this.state.paymentError }</span><br />
                 <input className={styles.submit} disabled={this.state.submitDisabled} type='submit' value='Purchase' />
               </div>
-              <div className={styles.flexItem}>
-                <h2 className={styles.section}>Your Order</h2>
-              </div>
             </div>
           </form>
         </div>
