@@ -14,6 +14,12 @@ class BreweryList extends React.Component {
     this.description = breweryInfo.description;
     this.phoneNumber = this.props.brewery.phone || '(650) 269 - 2188'; // Default number
     this.cleanedPhoneNumber = this.phoneNumber.replace(/["'() -]/g, '');
+
+    this.handleModal = this.handleModal.bind(this);
+  }
+
+  handleModal() {
+    this.props.toggleModal(this.props.brewery);
   }
 
   // <Link href={"tel:" + this.cleanedPhoneNumber }>
@@ -26,9 +32,9 @@ class BreweryList extends React.Component {
   render() {
     return (
       <div className={styles.cell} >
-        <Link className={styles.moreInfo} to="/modal">
+        <div className={styles.moreInfo} onClick={this.handleModal}>
           <i className="material-icons">info_outline</i>
-        </Link>
+        </div>
         <Link to={`/${this.props.city}/${this.props.brewery.brewery.name}`}>
             <img className={styles.cover} src={this.squareImage} />
         </Link>

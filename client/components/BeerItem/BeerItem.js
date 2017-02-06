@@ -16,12 +16,14 @@ const mockImages = [
 
 const BeerItem = (props) => {
 
-  const handleAddToCartClick = () => {
+  const handleAddToCartClick = (e) => {
+    e.stopPropagation(); //don't go to BeerItemModal when add to flight is clicked
     const beer = {
       name: props.beer.name,
       image: mockImages[props.beer.style.id % mockImages.length]
     }
     props.addToCart(beer);
+
   };
 
   const handleModal = () => {
