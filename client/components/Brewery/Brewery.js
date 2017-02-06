@@ -6,10 +6,6 @@ import BeerCart from '../BeerCart/BeerCart';
 import Checkout from '../Checkout/Checkout';
 import styles from './Brewery.css';
 
-
-
-
-
 const cartSize = 4;
 
 class Beers extends React.Component {
@@ -23,7 +19,6 @@ class Beers extends React.Component {
     this.addToCart = this.addToCart.bind(this);
     this.removeFromCart = this.removeFromCart.bind(this);
     this.checkout = this.checkout.bind(this);
-    this.savedUrl = '';
   }
 
   componentDidMount() {
@@ -46,7 +41,7 @@ class Beers extends React.Component {
     var newCart = this.state.cart.slice(0);
     newCart.splice(indexToRemove, 1);
     if (this.state.inCheckout) {
-      window.history.pushState('not sure what this arg is', 'Title-In-Browser-History', this.savedUrl);
+      window.history.back();
     }
     this.setState({
       cart: newCart,
@@ -55,7 +50,6 @@ class Beers extends React.Component {
   }
 
   checkout() {
-    this.savedUrl = window.location.href;
     window.history.pushState('not sure what this arg is', 'Title-In-Browser-History', '/checkout');
     this.setState({inCheckout: true});
   }
