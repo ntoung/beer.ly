@@ -11,6 +11,7 @@
 .title {
   text-align: center;
   font-weight: bold;
+  margin-top: 10px;
 }
 
 .image {
@@ -23,9 +24,10 @@
 }
 
 .xButtonImage {
+	display: block;
 	position: absolute;
-	width: 20px;
-	height: 20px;
+	width: 15px;
+	height: 15px;
 	top: 5px;
 	right: 5px;
 }
