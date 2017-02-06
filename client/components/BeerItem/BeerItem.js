@@ -2,14 +2,16 @@ import React from 'react';
 import styles from './BeerItem.css';
 
 const mockImages = [
-  'https://files.slack.com/files-pri/T3A5SKW0Z-F3ZGZL26L/beer2.jpg',
-  'https://files.slack.com/files-pri/T3A5SKW0Z-F3ZHSEP41/beer3.jpg',
-  'https://files.slack.com/files-pri/T3A5SKW0Z-F40UP24CF/beer4.jpg',
-  'https://files.slack.com/files-pri/T3A5SKW0Z-F3ZHSHKJM/beer1.jpg',
-  'https://files.slack.com/files-pri/T3A5SKW0Z-F410A7Y8N/beer5.png',
-  'https://files.slack.com/files-pri/T3A5SKW0Z-F409QS66N/beer6.png',
-  'https://files.slack.com/files-pri/T3A5SKW0Z-F409QSLP4/beer7.png',
-  'https://files.slack.com/files-pri/T3A5SKW0Z-F3ZK5QD33/beer8.jpg'
+  'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer1.png',
+  'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer2.png',
+  'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer3.png',
+  'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer4.png',
+  'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer5.png',
+  'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer6.png',
+  'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer7.png',
+  'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer8.png',
+  'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer9.png',
+  'https://s3-us-west-1.amazonaws.com/beer.ly/beers/beer10.png'
 ];
 
 const BeerItem = (props) => {
