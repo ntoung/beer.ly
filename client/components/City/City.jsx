@@ -46,7 +46,7 @@ class City extends React.Component {
       <div className={styles.wrapper}>
         <div className={styles.heading}>
           <h1>Breweries in {this.state.city}</h1>
-          <p>About {this.state.breweries.length} results ({(1 / this.state.breweries.length).toFixed(5)} seconds) </p>
+          <p className={styles.details}>About {this.state.breweries.length} results ({(1 / this.state.breweries.length).toFixed(5)} seconds) </p>
         </div>
         <BreweryList breweries={this.state.breweries} city={this.state.city}/>
       </div>

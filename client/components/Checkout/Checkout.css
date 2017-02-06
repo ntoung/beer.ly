@@ -1,0 +1,47 @@
+.wrapper {
+  width: 80%;
+  margin: auto;
+  position: relative;
+  top: 100px;
+  /*border: 1px solid red;*/
+}
+
+.input {
+  width: 250px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 1em;
+}
+
+.submit {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.submit:hover {
+  background-color: #45a049;
+}
+
+.flexRow {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+}
+
+.flexItem {
+  margin: auto;
+  height: 500px;
+  align-self: flex-start;
+}
+
+.section {
+  line-height:.5em;
+}

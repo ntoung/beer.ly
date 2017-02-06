@@ -7,6 +7,10 @@
 }
 
 .heading {
-  line-height: 1em;
+  /*line-height: 1em;*/
   margin-bottom: 2.5em;
+}
+
+.details {
+  line-height: 0;
 }
