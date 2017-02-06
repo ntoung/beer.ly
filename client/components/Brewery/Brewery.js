@@ -6,61 +6,25 @@ import BeerCart from '../BeerCart/BeerCart';
 import Checkout from '../Checkout/Checkout';
 import styles from './Brewery.css';
 
-const cartSize = 4;
-
 class Beers extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      beers: [],
-      cart: [],
-      inCheckout: false
+      beers: []
     };
-    this.addToCart = this.addToCart.bind(this);
-    this.removeFromCart = this.removeFromCart.bind(this);
-    this.checkout = this.checkout.bind(this);
   }
 
   componentDidMount() {
     this.fetchBeers();
   }
 
-  addToCart(beer) {
-    // https://facebook.github.io/react/tutorial/tutorial.html#why-immutability-is-important
-    if (this.state.cart.length === cartSize) {
-      return;
-    }
-    const newCart = this.state.cart.slice(0);
-    newCart.push(beer);
-    this.setState({
-      cart: newCart
-    });
-  }
-
-  removeFromCart(indexToRemove) {
-    var newCart = this.state.cart.slice(0);
-    newCart.splice(indexToRemove, 1);
-    if (this.state.inCheckout) {
-      window.history.back();
-    }
-    this.setState({
-      cart: newCart,
-      inCheckout: false
-    });
-  }
-
-  checkout() {
-    window.history.pushState('not sure what this arg is', 'Title-In-Browser-History', '/checkout');
-    this.setState({inCheckout: true});
-  }
-
   fetchBeers() {
     const context = this;
     axios.get('/api/beers/' + this.props.params.brewery)
-      .then(function(response) {
+      .then((response) => {
         context.handleSuccess(response.data);
       })
-      .catch(function(error) {
+      .catch((error) => {
         context.handleError(error);
       });
   }
@@ -80,10 +44,10 @@ class Beers extends React.Component {
       <div>
         <h2>{this.props.params.brewery}</h2>
         <div>
-          {this.state.cart.length > 0 ? <BeerCart beers={this.state.cart} removeFromCart={this.removeFromCart} inCheckout={this.state.inCheckout} checkout={this.checkout} /> : null}
-          {this.state.inCheckout ?
+          {this.props.cart.length > 0 ? <BeerCart beers={this.props.cart} removeFromCart={this.props.removeFromCart} inCheckout={this.props.inCheckout} checkout={this.props.checkout} /> : null}
+          {this.props.inCheckout ?
             <Checkout />
-            : <BeerList beers={this.state.beers} addToCart={this.addToCart} />
+            : <BeerList beers={this.state.beers} addToCart={this.props.addToCart} />
           }
         </div>
       </div>
@@ -92,7 +56,12 @@ class Beers extends React.Component {
 }
 
 Beers.propTypes = {
-  params: React.PropTypes.object
+  params: React.PropTypes.object,
+  cart: React.PropTypes.array,
+  inCheckout: React.PropTypes.bool,
+  checkout: React.PropTypes.func,
+  addToCart: React.PropTypes.func,
+  removeFromCart: React.PropTypes.func
 };
 
 export default Beers;

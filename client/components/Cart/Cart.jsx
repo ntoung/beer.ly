@@ -25,9 +25,13 @@ class Cart extends React.Component {
   handleClose = () => this.setState({open: false});
 
   render() {
+    const beersInCart = this.props.cart.map((beer) => {
+      return <MenuItem primaryText={beer.name} />;
+    });
+
     return (
       <div onClick={this.handleToggle}>
-        <Badge badgeContent={4} secondary={true} badgeStyle={{top: 12, right: 12}}>
+        <Badge badgeContent={this.props.cart.length} secondary={true} badgeStyle={{top: 12, right: 12}}>
           <IconButton tooltip="Cart">
             <ShoppingCartIcon style={iconStyles} />
           </IconButton>
@@ -39,10 +43,7 @@ class Cart extends React.Component {
           open={this.state.open}
           onRequestChange={(open) => this.setState({open})}
         >
-          <MenuItem primaryText="Item 1" />
-          <MenuItem primaryText="Item 2" />
-          <MenuItem primaryText="Item 3" />
-          <MenuItem primaryText="Item 4" />
+          {beersInCart}
         </Drawer>
       </div>
     );
@@ -50,7 +51,7 @@ class Cart extends React.Component {
 }
 
 Cart.propTypes = {
-  //location: React.PropTypes.object.isRequired
+  cart: React.PropTypes.array
 };
 
 export default Cart;
