@@ -16,22 +16,33 @@ var BeerCart = (props) => {
   
   var cartItems =[];
   for (var i = 0; i < props.beers.length; i++) {
-    var cartItem = <CartItem beer={props.beers[i]} index={i} removeFromCart={props.removeFromCart} />
+    var cartItem = <CartItem key={i} beer={props.beers[i]} index={i} removeFromCart={props.removeFromCart} />
     cartItems.push(cartItem);
+  }
+
+  var cartDetailsHandler = () => {
+    return (cartItems.length) ? 
+      (<h4>Your Cart has {cartItems.length} / 4 selections</h4>):(<h4>Your Cart is Empty!</h4>);
   }
   
   return (
-    <div className={styles.cartRow}>
-    {cartItems}
-    {props.beers.length === cartSize ?
-      <MuiThemeProvider>
-        {props.inCheckout ?
-          null
-          : <RaisedButton className={styles.button} onClick={props.checkout} label="Checkout" />
+    <div className={styles.wrapper}>
+      <div className={styles.details}>
+        {cartDetailsHandler()}
+        {props.beers.length === cartSize ?
+          <MuiThemeProvider>
+            {props.inCheckout ?
+              null
+              : <RaisedButton className={styles.button} primary onClick={props.checkout} label="Checkout" />
+            }
+          </MuiThemeProvider>
+          : null
         }
-      </MuiThemeProvider>
-      : null
-    }
+      </div>
+      <div className={styles.cartRow}>
+      {cartItems}
+      
+      </div>
     </div>
   );
 };

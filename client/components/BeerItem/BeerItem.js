@@ -34,16 +34,30 @@ const BeerItem = (props) => {
     props.toggleModal(beer);
   }
 
+   // Handles situation when brewery does not supply information
+  var abvHandler = () => {
+    return (props.beer.abv) ?
+      (<strong className={styles.abv}>{props.beer.abv}% ALC/VOL</strong>) :
+      (<strong className={styles.abv}>7.25% ALC/VOL</strong>);
+  }
+
+  var descriptionHandler = () => {
+    return (props.beer.description) ?
+      (<p className={styles.description}>{props.beer.description.substring(0, 60)}...</p>) :
+      (<p className={styles.description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed...</p>) ;
+  }
+
   return (
-    <div className={styles.container} onClick={handleModal}>
+    <div className={styles.cell} onClick={handleModal}>
       <div className={styles.title}>
         {props.beer.name}
       </div>
       {/*<img src={props.beer.labels ? props.beer.labels.large : 'http://placehold.it/350x350'} className={styles.image} /> */}
       <img src={mockImages[props.beer.style.id % mockImages.length]} className={styles.image} />
 
+      { /* Optional information handlers */ }
+      { abvHandler() } { descriptionHandler() }
       <button className={styles.addButton} onClick={handleAddToCartClick} >Add to Flight</button>
-
     </div>
   );
 };
