@@ -9,10 +9,6 @@ import { ReactScriptLoaderMixin } from 'react-script-loader';
 var Checkout = React.createClass({
   mixins: [ ReactScriptLoaderMixin ],
 
-  constructor(props) {
-    super(props);
-  },
-
   getInitialState: function() {
     return {
       stripeLoading: true,
@@ -116,9 +112,6 @@ var Checkout = React.createClass({
 
                 <span>{ this.state.paymentError }</span><br />
                 <input className={styles.submit} disabled={this.state.submitDisabled} type='submit' value='Purchase' />
-              </div>
-              <div className={styles.flexItem}>
-                <h2 className={styles.section}>Your Order</h2>
               </div>
             </div>
           </form>

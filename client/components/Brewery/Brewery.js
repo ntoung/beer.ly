@@ -50,7 +50,7 @@ class Beers extends React.Component {
   }
 
   checkout() {
-    // window.history.pushState(“blerp”, “Title”, “/checkout”);
+    window.history.pushState('not sure what this arg is', 'Title-In-Browser-History', '/checkout');
     this.setState({inCheckout: true});
   }
 
@@ -82,7 +82,7 @@ class Beers extends React.Component {
         <div>
           {this.state.cart.length > 0 ? <BeerCart beers={this.state.cart} removeFromCart={this.removeFromCart} inCheckout={this.state.inCheckout} checkout={this.checkout} /> : null}
           {this.state.inCheckout ?
-            <Checkout beers={this.state.beers} />
+            <Checkout />
             : <BeerList beers={this.state.beers} addToCart={this.addToCart} />
           }
         </div>
