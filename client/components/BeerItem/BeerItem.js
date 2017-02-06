@@ -19,7 +19,7 @@ const BeerItem = (props) => {
   const handleClick = () => {
     var beer = {
       name: props.beer.name,
-      image: mockImages[props.beer.style.id % mockImages.length],
+      image: mockImages[props.beer.style.id % mockImages.length]
     }
     props.addToCart(beer);
   };
