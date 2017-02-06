@@ -3,6 +3,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   devtool: 'eval-source-map',
@@ -26,7 +27,9 @@ module.exports = {
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development')
-    })
+    }),
+    // Write out CSS bundle to its own file:
+    new ExtractTextPlugin('style.css', { allChunks: true })
   ],
   module: {
     loaders: [{
@@ -42,6 +45,10 @@ module.exports = {
     }, {
       test: /\.css$/,
       loader: 'style!css?modules&localIdentName=[name]---[local]---[hash:base64:5]'
+    }, {
+        test: /\.(less)$/,
+        exclude: /\b(some\-css\-framework|whatever)\b/i,
+        loader: ExtractTextPlugin.extract("style?sourceMap", "css?sourceMap!autoprefixer?browsers=last 2 version!less")
     }]
   },
   resolve: {

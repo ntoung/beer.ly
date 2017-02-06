@@ -18,23 +18,30 @@
     "jscs": "jscs ."
   },
   "dependencies": {
+    "autoprefixer-loader": "^3.2.0",
     "axios": "^0.15.3",
     "babel-cli": "^6.4.0",
     "bcrypt": "^1.0.2",
     "bluebird": "^3.4.7",
     "body-parser": "^1.16.0",
+    "css-loader": "^0.19.0",
+    "elemental": "^0.6.1",
     "jsonwebtoken": "^7.2.1",
+    "less": "^2.7.2",
+    "less-loader": "^2.2.3",
     "lodash": "^4.17.4",
     "material-ui": "^0.16.7",
     "mongoose": "^4.8.1",
     "morgan": "^1.7.0",
     "nodemon": "^1.11.0",
     "react": "^15.4.2",
+    "react-addons-css-transition-group": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-router": "^3.0.2",
     "react-script-loader": "0.0.1",
     "react-tap-event-plugin": "^2.0.1",
-    "stripe": "^4.15.0"
+    "stripe": "^4.15.0",
+    "style-loader": "^0.12.4"
   },
   "devDependencies": {
     "autoprefixer": "^6.0.3",
