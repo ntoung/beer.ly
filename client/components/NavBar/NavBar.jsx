@@ -11,7 +11,7 @@ class Nav extends React.Component {
   render() {
     const isHomePage = this.props.location.pathname === '/';
     const logo = isHomePage ? styles.lightLogo : styles.logo;
-    const cart = isHomePage ? null : <Cart location={this.props.location.pathname}/>;
+    const cart = isHomePage ? null : <Cart cart={this.props.cart} location={this.props.location.pathname}/>;
     const navbar = isHomePage ? styles.transparentNavbar : styles.navbar;
 
     return (
@@ -30,7 +30,8 @@ class Nav extends React.Component {
 }
 
 Nav.propTypes = {
-  location: React.PropTypes.object.isRequired
+  location: React.PropTypes.object.isRequired,
+  cart: React.PropTypes.array
 };
 
 export default Nav;
