@@ -1,12 +1,8 @@
 const axios = require('axios');
 
-// const Post = require('./postModel')
-const _API_KEY = require('../../config/apiKeys.js').breweryDBKey;
-const _API_BASEURL = 'http://api.brewerydb.com/v2/';
-
-// Helper formatting function for connecting to breweryDB
-const createUrl = function(endPoint, queryOptions) {
-  const key = '?key=' + _API_KEY;
+// Helper function for creating url with query string and api key
+const createUrl = (api, queryOptions) => {
+  const key = '?key=' + api.key;
 
   const queryStrings = [];
 
@@ -20,16 +16,16 @@ const createUrl = function(endPoint, queryOptions) {
     }
   }
 
-  return _API_BASEURL + endPoint + key + '&' + queryStrings.join('&');
+  return api.url + api.endPoint + key + '&' + queryStrings.join('&');
 };
 
-exports.fetch = function(endPoint, queryOptions) {
-  const url = createUrl(endPoint, queryOptions);
+exports.fetch = (api, queryOptions) => {
+  const url = createUrl(api, queryOptions);
   return axios.get(url)
-    .then(function(response) {
+    .then((response) => {
       return response.data;
     })
-    .catch(function(error) {
+    .catch((error) => {
       return error;
     });
 };

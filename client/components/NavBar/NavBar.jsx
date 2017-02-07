@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import Cart from '../Cart/Cart';
 import styles from './NavBar.css';
@@ -30,8 +30,8 @@ class Nav extends React.Component {
 }
 
 Nav.propTypes = {
-  location: React.PropTypes.object.isRequired,
-  cart: React.PropTypes.array
+  location: PropTypes.object.isRequired,
+  cart: PropTypes.array
 };
 
 export default Nav;

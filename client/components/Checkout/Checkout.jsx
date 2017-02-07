@@ -6,7 +6,7 @@ import axios from 'axios';
 import { stripePublishableKey, stripeTestKey } from '../../../server/config/apiKeys';
 import { ReactScriptLoaderMixin } from 'react-script-loader';
 
-var Checkout = React.createClass({
+const Checkout = React.createClass({
   mixins: [ ReactScriptLoaderMixin ],
 
   getInitialState: function() {
@@ -38,7 +38,7 @@ var Checkout = React.createClass({
   },
 
   onSubmit: function(event) {
-    var self = this;
+    const self = this;
     event.preventDefault();
 
     // prevent duplicate charges by disabling submit button
@@ -51,16 +51,16 @@ var Checkout = React.createClass({
       else {
         self.setState({ paymentComplete: true, submitDisabled: false, token: response.id });
         // make request to your server here!
-        
+
         axios.post('auth/checkout', {
           stripeToken: response.id,
           //amount
         })
           .then((response) => {
-            
+
           })
           .catch((error) => {
-            
+
           });
       }
     });
@@ -95,23 +95,23 @@ var Checkout = React.createClass({
             <div className={styles.flexRow}>
               <div className={styles.flexItem}>
                 <h2 className={styles.section}>Delivery Address</h2>
-                <input className={styles.input} type='text' data-stripe='name' placeholder='Name' /><br />
-                <input className={styles.input} type='text' data-stripe='address-line1' placeholder='Address' /><br />
-                <input className={styles.input} type='text' data-stripe='address-city' placeholder='City' /><br />
-                <input className={styles.input} type='text' data-stripe='address-state' placeholder='State' /><br />
-                <input className={styles.input} type='text' data-stripe='address-zip' placeholder='Zipcode' /><br />
-                <input className={styles.input} type='text' data-stripe='address-country' placeholder='Country' /><br />
+                <input className={styles.input} type="text" data-stripe="name" placeholder="Name" /><br />
+                <input className={styles.input} type="text" data-stripe="address-line1" placeholder="Address" /><br />
+                <input className={styles.input} type="text" data-stripe="address-city" placeholder="City" /><br />
+                <input className={styles.input} type="text" data-stripe="address-state" placeholder="State" /><br />
+                <input className={styles.input} type="text" data-stripe="address-zip" placeholder="Zipcode" /><br />
+                <input className={styles.input} type="text" data-stripe="address-country" placeholder="Country" /><br />
               </div>
 
               <div className={styles.flexItem}>
                 <h2 className={styles.section}>Payment Method</h2>
-                <input className={styles.input} type='text' data-stripe='number' placeholder='Credit Card Number' /><br />
-                <input className={styles.input} type='text' data-stripe='exp-month' placeholder='Expiration Month' /><br />
-                <input className={styles.input} type='text' data-stripe='exp-year' placeholder='Expiration Year' /><br />
-                <input className={styles.input} type='text' data-stripe='cvc' placeholder='CVC' /><br />
+                <input className={styles.input} type="text" data-stripe="number" placeholder="Credit Card Number" /><br />
+                <input className={styles.input} type="text" data-stripe="exp-month" placeholder="Expiration Month" /><br />
+                <input className={styles.input} type="text" data-stripe="exp-year" placeholder="Expiration Year" /><br />
+                <input className={styles.input} type="text" data-stripe="cvc" placeholder="CVC" /><br />
 
                 <span>{ this.state.paymentError }</span><br />
-                <input className={styles.submit} disabled={this.state.submitDisabled} type='submit' value='Purchase' />
+                <input className={styles.submit} disabled={this.state.submitDisabled} type="submit" value="Purchase" />
               </div>
             </div>
           </form>
@@ -120,6 +120,5 @@ var Checkout = React.createClass({
     }
   }
 });
-
 
 export default Checkout;

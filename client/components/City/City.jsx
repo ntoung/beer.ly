@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import axios from 'axios';
 import BreweryList from '../BreweryList/BreweryList';
 import styles from './City.css';
@@ -55,7 +55,7 @@ class City extends React.Component {
 }
 
 City.propTypes = {
-  params: React.PropTypes.object
+  params: PropTypes.object
 };
 
 export default City;

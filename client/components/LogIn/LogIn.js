@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './LogIn.css';
 import axios from 'axios';
 
 class LogIn extends React.Component {
@@ -9,7 +8,7 @@ class LogIn extends React.Component {
     this.state = {
       username: '',
       password: ''
-    }
+    };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
@@ -18,12 +17,11 @@ class LogIn extends React.Component {
 
 
   handleSubmit(event) {
-
     // Attempt login
     axios.post('auth/users/logIn/', this.state)
       .then((response) => {
-        // Clear input fields 
-        this.setState({username:'', password:''});
+        // Clear input fields
+        this.setState({username: '', password: ''});
         console.log(response.data.message);
       })
       .catch((error) => {
@@ -46,16 +44,16 @@ class LogIn extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <h3> LogIn </h3>
         <label>
-          <input 
-            type="text" 
-            name="username" 
+          <input
+            type="text"
+            name="username"
             placeholder="Username..."
             value={this.state.username}
             onChange={this.handleUsernameChange}
           />
-          <input 
-            type="password" 
-            name="password" 
+          <input
+            type="password"
+            name="password"
             placeholder="Password..."
             value={this.state.password}
             onChange={this.handlePasswordChange}
@@ -65,7 +63,7 @@ class LogIn extends React.Component {
       </form>
     );
   }
-};
+}
 
 
 export default LogIn;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import styles from './BeerItem.css';
 
 const mockImages = [
@@ -15,34 +15,32 @@ const mockImages = [
 ];
 
 const BeerItem = (props) => {
-
   const handleClick = () => {
-    var beer = {
+    const beer = {
       name: props.beer.name,
       image: mockImages[props.beer.style.id % mockImages.length]
-    }
+    };
     props.addToCart(beer);
   };
 
   // Handles situation when brewery does not supply information
-  var abvHandler = () => {
+  const abvHandler = () => {
     return (props.beer.abv) ?
       (<strong className={styles.abv}>{props.beer.abv}% ALC/VOL</strong>) :
       (<strong className={styles.abv}>7.25% ALC/VOL</strong>);
-  }
+  };
 
-  var descriptionHandler = () => {
+  const descriptionHandler = () => {
     return (props.beer.description) ?
       (<p className={styles.description}>{props.beer.description.substring(0, 60)}...</p>) :
-      (<p className={styles.description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed...</p>) ;
-  }
+      (<p className={styles.description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed...</p>);
+  };
 
   return (
     <div className={styles.cell}>
       <div className={styles.title}>
         {props.beer.name}
       </div>
-      {/*<img src={props.beer.labels ? props.beer.labels.large : 'http://placehold.it/350x350'} className={styles.image} /> */}
       <img src={mockImages[props.beer.style.id % mockImages.length]} className={styles.image} />
       { /* Optional information handlers */ }
       { abvHandler() } { descriptionHandler() }
@@ -50,6 +48,10 @@ const BeerItem = (props) => {
 
     </div>
   );
+};
+
+BeerItem.propTypes = {
+  beer: PropTypes.object
 };
 
 

@@ -1,7 +1,13 @@
-.cell {
-	/*flex: 0 0 100%;*/
-  display: block;
+.title {
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.3em;
+}
 
+.cell {
+	flex: 0 0 100%;
+  display: block;
+	position: relative;
   transition: background-color 0.3s ease;
   border: 1px solid grey;
   border-radius: 3px;
@@ -12,7 +18,6 @@
   text-align: center;
   opacity:.8;
   color: black;
-
 
   box-shadow: 0 4px 2px rgba(0,0,0,0.175);
 }
@@ -25,7 +30,7 @@
   width: 75%;
   margin: 0 auto;
   padding: 0 20px;
-	
+
   transition: 0.3s ease-in;
   text-transform: uppercase;
 
@@ -51,15 +56,21 @@
 
 }
 
-.title {
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.3em;
-}
-
 .description {
   font-size: .9em;
   height: 35px;
 }
 
+/* Tablet (medium) screens */
+@media (min-width: 40em) {
+  .cell {
+    flex: 0 0 40%;
+  }
+}
 
+/* Large screens */
+@media (min-width: 60em) {
+  .cell {
+    flex: 0 0 30%;
+  }
+}

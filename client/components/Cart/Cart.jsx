@@ -25,8 +25,8 @@ class Cart extends React.Component {
   handleClose = () => this.setState({open: false});
 
   render() {
-    const beersInCart = this.props.cart.map((beer) => {
-      return <MenuItem primaryText={beer.name} />;
+    const beersInCart = this.props.cart.map((beer, index) => {
+      return <MenuItem primaryText={beer.name} key={index} />;
     });
 
     return (

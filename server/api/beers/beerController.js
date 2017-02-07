@@ -1,34 +1,45 @@
 'use strict';
 
 const utils = require('../utils/helpers');
+const config = require('../../config/apiKeys.js');
 
 function fetchBreweryByName(name) {
-  const endPoint = 'breweries/';
+  const api = {
+    key: config.breweryDBKey,
+    url: 'http://api.brewerydb.com/v2/',
+    endPoint: 'breweries/'
+  };
+
   const queryOptions = {
     // name: 'Fort Point Brewing Company'
     name: name
   };
 
-  return utils.fetch(endPoint, queryOptions);
+  return utils.fetch(api, queryOptions);
 }
 
 function fetchBeersByBreweryId(breweryID) {
-  const endPoint = `brewery/${breweryID}/beers/`;
-  return utils.fetch(endPoint, {});
+  const api = {
+    key: config.breweryDBKey,
+    url: 'http://api.brewerydb.com/v2/',
+    endPoint: `brewery/${breweryID}/beers/`
+  };
+
+  return utils.fetch(api, {});
 }
 
-exports.get = (req, res, next) => {
+exports.get = (req, res) => {
   const name = req.params.brewery;
 
   fetchBreweryByName(name)
-    .then(function(response) {
+    .then((response) => {
       const breweryID = response.data[0].id;
       return fetchBeersByBreweryId(breweryID);
     })
-    .then(function(response) {
+    .then((response) => {
       res.end(JSON.stringify(response.data));
     })
-    .catch(function(error) {
+    .catch((error) => {
       console.log(error);
     });
 };

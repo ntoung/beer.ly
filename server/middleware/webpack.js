@@ -12,7 +12,7 @@ const isDeveloping = config.env !== config.prod;
 // Build directory is where the bundle file will be placed
 const BUILD_DIR = path.join(__dirname, '/../../dist/');
 
-module.exports = function(app, express) {
+module.exports = (app, express) => {
   // The following Webpack middleware allows for hot reloading on the client when in development.
   // No refresh or restart needed. It saves state in memory, and it's awesome. Don't break it.
   // If you'd like to learn more:

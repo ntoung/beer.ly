@@ -1,47 +1,23 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import BeerItem from '../BeerItem/BeerItem';
 import styles from './BeerList.css';
 
-const rowSize = 3;
+const BeerList = (props) => {
+  const beers = props.beers.map((beer) => {
+    return <BeerItem key={beer.id} beer={beer} className={styles.beerItem} isBeingRenderedInCart={false} addToCart={props.addToCart} />;
+  });
 
-var BeerRow = (props) => (
-	<div className={styles.beerRow}>
-		{
-			props.beers.map((beer) =>
-				<BeerItem
-					key={beer.id}
-          beer={beer}
-					className={styles.beerItem}
-          isBeingRenderedInCart={false}
-          addToCart={props.addToCart}
-				/>
-			)
-		}
-	</div>
-);
-
-var BeerList = (props) => {
-  var beerRows = [];
-  var curRow = [];
-  for (var i = 0; i < props.beers.length; i++) {
-  	curRow.push(props.beers[i]);
-  	if (curRow.length === rowSize) {
-  		var beerRow = (<BeerRow
-        key={i}
-        className={styles.row}
-        beers={curRow}
-        style={styles.beerRow}
-        addToCart={props.addToCart}
-      />);
-  		beerRows.push(beerRow);
-  		curRow = [];
-  	}
-  }
   return (
-	  <div className={styles.wrapper}>
-	  	{beerRows}
+	  <div className={styles.grid}>
+			{beers}
 	  </div>
-	)
+	);
 };
+
+BeerList.propTypes = {
+  beers: PropTypes.array,
+  addToCart: PropTypes.func
+};
+
 
 export default BeerList;
