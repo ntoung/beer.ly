@@ -48,8 +48,11 @@ Instructions on how to get set up with HTTPS
   // For Common Name, type 'localhost'.
   // For everything else, you can just leave it blank.
   ```
-1. Files have already been added to .gitignore so don't worry about adding them. (Make sure you pull down the latest from master after we merge.)
-1. Still use 'npm start' to start the server.
+1. Files have already been added to .gitignore so don't worry about adding them.
+1. Start the server as you normally would.
+```
+npm start
+```
 1. Go to 'https://localhost:8008' to reach the server. Use https from now on. If you're using Chrome, it's going to complain that it's insecure. Just hit the 'Advanced' button and click 'Continue anyway'. You only have to do this once.
 
 ### Webpack Development Middleware
