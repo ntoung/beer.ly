@@ -37,6 +37,21 @@ npm start
 ### Lazy Script Loading
 ### React CSS Modules
 ### HTTPS Server / SSL Certification
+
+Instructions on how to get set up with HTTPS
+
+1. Create a key.pem / cert.pem file in the root directory of the project. (Same folder as index.js). Use this command:
+  ```
+  openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 30
+
+  // For passcode, type 'beerly' for now. You can change the passcode in server/middleware/SSL.js.
+  // For Common Name, type 'localhost'.
+  // For everything else, you can just leave it blank.
+  ```
+1. Files have already been added to .gitignore so don't worry about adding them. (Make sure you pull down the latest from master after we merge.)
+1. Still use 'npm start' to start the server.
+1. Go to 'https://localhost:8008' to reach the server. Use https from now on. If you're using Chrome, it's going to complain that it's insecure. Just hit the 'Advanced' button and click 'Continue anyway'. You only have to do this once.
+
 ### Webpack Development Middleware
 
 ## API
